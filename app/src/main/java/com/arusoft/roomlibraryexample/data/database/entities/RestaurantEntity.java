@@ -13,15 +13,9 @@ import java.util.Date;
 
 @Entity(tableName = DataBaseConstants.RestaurantTable.TABLE_NAME)
 public class RestaurantEntity {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = DataBaseConstants.RestaurantTable.ID_COLUMN_NAME)
-    public int id;
-
-    @ColumnInfo(name = DataBaseConstants.RestaurantTable.NAME_COLUMN_NAME)
-    public String name;
-
-    @ColumnInfo(name = DataBaseConstants.RestaurantTable.DESCRIPTION_COLUMN_NAME)
-    public String description;
+    public long id;
 
     @TypeConverters(DataTypeConverters.class)
     @ColumnInfo(name = DataBaseConstants.RestaurantTable.OPEN_TIME_COLUMN_NAME)
@@ -33,5 +27,11 @@ public class RestaurantEntity {
 
     @Embedded(prefix = DataBaseConstants.RestaurantTable.RESTAURANT_LOCATION_PREFIX)
     public Location location;
+
+    @ColumnInfo(name = DataBaseConstants.RestaurantTable.NAME_COLUMN_NAME)
+    public String name;
+
+    @ColumnInfo(name = DataBaseConstants.RestaurantTable.DESCRIPTION_COLUMN_NAME)
+    public String description;
 
 }

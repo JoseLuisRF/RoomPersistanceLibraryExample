@@ -1,9 +1,12 @@
 package com.arusoft.roomlibraryexample.presentation;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class RestaurantModel {
 
+    private long restaurantId;
     private String name;
     private String description;
     private String address;
@@ -11,6 +14,8 @@ public class RestaurantModel {
     private double longitude;
     private Date openTime;
     private Date closeTime;
+
+    private List<MenuItemModel> menu = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -66,5 +71,30 @@ public class RestaurantModel {
 
     public void setCloseTime(Date closeTime) {
         this.closeTime = closeTime;
+    }
+
+    public List<MenuItemModel> getMenu() {
+        return menu;
+    }
+
+    public long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(long restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    @Override
+    public String toString() {
+        return "RestaurantModel{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", openTime=" + openTime +
+                ", closeTime=" + closeTime +
+                '}';
     }
 }

@@ -7,14 +7,15 @@ import android.content.Context;
 
 import com.arusoft.roomlibraryexample.data.database.dao.RestaurantDao;
 import com.arusoft.roomlibraryexample.data.database.entities.RestaurantEntity;
+import com.arusoft.roomlibraryexample.data.database.entities.RestaurantMenuEntity;
 import com.arusoft.roomlibraryexample.data.database.util.DataBaseConstants;
 
-@Database(entities = {RestaurantEntity.class}, version = DataBaseConstants.DATA_BASE_VERSION)
+@Database(entities = {RestaurantEntity.class, RestaurantMenuEntity.class}, version = DataBaseConstants.DATA_BASE_VERSION)
 public abstract class ApplicationDatabase extends RoomDatabase {
 
     private static ApplicationDatabase INSTANCE;
 
-    public RestaurantDao restaurantDao;
+    public abstract RestaurantDao restaurantDao();
 
     /**
      * Creates a Data Base

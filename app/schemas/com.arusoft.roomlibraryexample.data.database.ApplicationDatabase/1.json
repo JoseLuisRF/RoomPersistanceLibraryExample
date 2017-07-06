@@ -1,0 +1,127 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "e399b23500ed7332a13eb7862509b82e",
+    "entities": [
+      {
+        "tableName": "restaurant",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT, `open_time` INTEGER, `close_time` INTEGER, `restaurant_name` TEXT, `restaurant_description` TEXT, `restaurant_latitude` REAL, `restaurant_longitude` REAL, `restaurant_address` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "openTime",
+            "columnName": "open_time",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "closeTime",
+            "columnName": "close_time",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "restaurant_name",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "restaurant_description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "location.latitude",
+            "columnName": "restaurant_latitude",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "location.longitude",
+            "columnName": "restaurant_longitude",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "location.address",
+            "columnName": "restaurant_address",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "restaurant_menu",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`_id` INTEGER PRIMARY KEY AUTOINCREMENT, `restaurant_id` INTEGER, `menu_title` TEXT, `menu_description` TEXT, `menu_price` REAL, FOREIGN KEY(`restaurant_id`) REFERENCES `restaurant`(`_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "restaurantId",
+            "columnName": "restaurant_id",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "menu_title",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "menu_description",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "menu_price",
+            "affinity": "REAL"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_restaurant_menu_restaurant_id",
+            "unique": false,
+            "columnNames": [
+              "restaurant_id"
+            ],
+            "createSql": "CREATE  INDEX `index_restaurant_menu_restaurant_id` ON `${TABLE_NAME}` (`restaurant_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "restaurant",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "restaurant_id"
+            ],
+            "referencedColumns": [
+              "_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e399b23500ed7332a13eb7862509b82e\")"
+    ]
+  }
+}

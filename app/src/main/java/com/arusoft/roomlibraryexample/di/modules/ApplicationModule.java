@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.arusoft.roomlibraryexample.RoomExampleApplication;
 import com.arusoft.roomlibraryexample.data.database.ApplicationDatabase;
+import com.arusoft.roomlibraryexample.util.DeviceUtils;
+import com.arusoft.roomlibraryexample.util.PermissionsManager;
 
 import javax.inject.Singleton;
 
@@ -30,6 +32,18 @@ public class ApplicationModule {
     @Provides
     public ApplicationDatabase providesApplicationDataBase(Context context) {
         return ApplicationDatabase.createDatabase(context);
+    }
+
+    @Singleton
+    @Provides
+    public DeviceUtils providesDeviceUtils(Context context) {
+        return new DeviceUtils(context);
+    }
+
+    @Singleton
+    @Provides
+    public PermissionsManager providesPermissionsManager(Context context) {
+        return new PermissionsManager(context);
     }
 
 }

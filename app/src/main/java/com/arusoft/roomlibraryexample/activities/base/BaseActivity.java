@@ -24,6 +24,7 @@ public class BaseActivity extends AppCompatActivity {
         activityComponent = DaggerActivityComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .storageModule(new StorageModule())
+
                 .repositoryModule(new RepositoryModule())
                 .build();
         setUpProgressDialog();
