@@ -10,7 +10,8 @@ import com.arusoft.roomlibraryexample.data.database.entities.RestaurantEntity;
 import com.arusoft.roomlibraryexample.data.database.entities.RestaurantMenuEntity;
 import com.arusoft.roomlibraryexample.data.database.util.DataBaseConstants;
 
-@Database(entities = {RestaurantEntity.class, RestaurantMenuEntity.class}, version = DataBaseConstants.DATA_BASE_VERSION)
+@Database(entities = {RestaurantEntity.class, RestaurantMenuEntity.class},
+        version = DataBaseConstants.DATA_BASE_VERSION)
 public abstract class ApplicationDatabase extends RoomDatabase {
 
     private static ApplicationDatabase INSTANCE;
@@ -27,7 +28,9 @@ public abstract class ApplicationDatabase extends RoomDatabase {
 
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(
-                    context, ApplicationDatabase.class, DataBaseConstants.DATA_BASE_NAME)
+                    context,
+                    ApplicationDatabase.class,
+                    DataBaseConstants.DATA_BASE_NAME)
                     .build();
         }
         return INSTANCE;
