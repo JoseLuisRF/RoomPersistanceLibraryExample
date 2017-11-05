@@ -23,6 +23,7 @@ public class NavigatorImpl implements Navigator {
 
     public void navigateToRegisterRestaurant() {
         Intent intent = new Intent(mContext, RegisterRestaurantActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 

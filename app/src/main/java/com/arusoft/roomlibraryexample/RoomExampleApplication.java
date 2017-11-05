@@ -37,7 +37,4 @@ public class RoomExampleApplication extends Application {
         return ((RoomExampleApplication) context.getApplicationContext()).applicationComponent;
     }
 
-    public static Context getInstance() {
-        return roomExampleApplication;
-    }
 }
